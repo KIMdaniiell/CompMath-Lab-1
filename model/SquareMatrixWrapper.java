@@ -30,7 +30,7 @@ public class SquareMatrixWrapper {
     public void printMatrixB() {
         for (int i = 0; i < dimension; i++) {
             String element = this.matrixB[i]+"";
-            System.out.println("X["+(i+1)+"] = " +element);
+            System.out.println("B["+(i+1)+"] = " +element);
         }
     }
 
