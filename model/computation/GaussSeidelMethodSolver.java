@@ -16,19 +16,19 @@ public class GaussSeidelMethodSolver {
         double[] xCurIter = new double[dimension];
         int iterationCounter = 0;
 
+
         do {
             iterationCounter += 1;
-            for(int i = 0; i<dimension; i++) {
-                xPrevIter[i] = xCurIter[i];
-            }
+            System.arraycopy(xCurIter, 0, xPrevIter, 0, dimension);
+
             for (int i = 0; i<dimension; i++) {
                 double sum_1 = 0;
                 double sum_2 = 0;
-                for (int j = 0; j< i; j++) {
-                    sum_1 += matrixA[i][j] * xCurIter[j];
+                for (int k = 0; k< i; k++) {
+                    sum_1 += matrixA[i][k] * xCurIter[k];
                 }
-                for (int j = i+1; j < dimension; j++) {
-                    sum_2 += matrixA[i][j] * xPrevIter[j];
+                for (int k = i+1; k < dimension; k++) {
+                    sum_2 += matrixA[i][k] * xPrevIter[k];
                 }
                 xCurIter[i] =  - (sum_1 + sum_2 - matrixB[i])/matrixA[i][i];
             }
