@@ -143,11 +143,13 @@ public class MatrixGenerationManager {
         for (int i =0; i< dimension; i++) {
             sumOfRow = 0;
             for (int j = 0; j<dimension; j++) {
-                sumOfRow += Math.pow(unknowns[j],dimension-j-1) * matrixA[i][j];
+                sumOfRow += unknowns[j] * matrixA[i][j];
             }
             matrixB[i] = sumOfRow;
-            //System.out.print(unknowns[i]+" ");
+
+            System.out.print(unknowns[i]+" ");
         }
+        System.out.println();
         return matrixB;
     }
 
