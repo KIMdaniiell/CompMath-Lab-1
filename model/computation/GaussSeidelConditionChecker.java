@@ -29,7 +29,9 @@ public class GaussSeidelConditionChecker {
             rowSum -= matrixA[i][i];
             if (matrixA[i][i] < rowSum) {
                 System.out.println( this.errorMessages[2]
-                        + "\n\t |aii| >= S( |aik| ) , k != i");
+                        + "\n\t |aii| >= S( |aik| ) , k != i"
+                        + "\n\t *В ряду "+(i+1)+"   S( |aik| ) = "+rowSum+" , а |aii| = "+matrixA[i][i]
+                );
                 return false;
             }
             if (matrixA[i][i] > rowSum) {
