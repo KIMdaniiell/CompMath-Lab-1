@@ -43,16 +43,15 @@ public class MatrixGenerationManager {
         while (!valid) {
             System.out.println( this.askingMessages[0] );
             try {
-                dimension = scanner.nextInt();
+                dimension = Integer.parseInt(scanner.nextLine());
                 if ( dimension>20) {
                     throw new InvalidInputValueException(errorMessages[1]);
                 } else if ( dimension<1) {
                     throw new InvalidInputValueException(errorMessages[2]);
                 }
                 valid = true;
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println( this.errorMessages[0] );
-                scanner.next();
             } catch (InvalidInputValueException e) {
                 System.out.println( e.getMessage() );
             } catch (Exception e) {
@@ -73,7 +72,7 @@ public class MatrixGenerationManager {
         while (!valid) {
             System.out.println( this.askingMessages[1] );
             try {
-                epsilon = scanner.nextDouble();
+                epsilon = Double.parseDouble(scanner.nextLine());
                 if (epsilon < 0) {
                     throw new InvalidInputValueException(errorMessages[6]);
                 }
@@ -81,9 +80,8 @@ public class MatrixGenerationManager {
                     System.out.println(this.errorMessages[3]);
                 }
                 valid = true;
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println( this.errorMessages[0] );
-                scanner.next();
             } catch (InvalidInputValueException e) {
                 System.out.println( e.getMessage() );
             } catch (Exception e) {

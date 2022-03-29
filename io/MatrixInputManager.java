@@ -42,13 +42,12 @@ public class MatrixInputManager {
         while (!valid) {
             System.out.println( this.askingMessages[0]);
             try {
-                modeNumber = scanner.nextInt();
+                modeNumber = Integer.parseInt(scanner.nextLine());
                 if ((modeNumber != 0)&&(modeNumber != 1)&&(modeNumber != 2))
                     throw new InvalidInputValueException( errorMessages[1]);
                 valid = true;
-            } catch (InputMismatchException e) {
+            } catch ( NumberFormatException e) {
                 System.out.println( this.errorMessages[0] );
-                scanner.next();
             } catch (InvalidInputValueException e) {
                 System.out.println( e.getMessage() );
             } catch (Exception e) {

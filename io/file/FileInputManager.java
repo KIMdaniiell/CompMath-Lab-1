@@ -63,14 +63,13 @@ public class FileInputManager {
                 return dimension;
             }
             throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение порядка матрицы]" );
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение порядка матрицы]" );
         }
     }
 
     private double readEpsilon() throws InvalidFileInputValueException {
         double epsilon;
-
         try {
             if (scanner.hasNext()){
                 epsilon = Double.parseDouble(scanner.nextLine());
@@ -86,7 +85,7 @@ public class FileInputManager {
             }
             throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение требуемой погрешности]" );
         } catch (NumberFormatException e) {
-            throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение порядка матрицы]" );
+            throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение требуемой погрешности]" );
         }
     }
 
