@@ -1,8 +1,9 @@
 package io;
 
-import computation.SquareMatrixWrapper;
+import model.SquareMatrixWrapper;
 import io.console.ConsoleInputManager;
 import io.file.FileInputManager;
+import io.generator.MatrixGenerationManager;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -26,9 +27,8 @@ public class MatrixInputManager {
                 FileInputManager fileInputManager = new FileInputManager();
                 return fileInputManager.getSquareMatrixWrapper(inputFilePath);
             case GENERATE:
-                System.out.println("[Генерирование]\tПока не реализовано!");
-                //TODO
-                return new SquareMatrixWrapper();
+                MatrixGenerationManager matrixGenerationManager = new MatrixGenerationManager();
+                return matrixGenerationManager.getSquareMatrixWrapper();
             default:
                 return new SquareMatrixWrapper();
         }

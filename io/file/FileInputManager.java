@@ -1,7 +1,6 @@
 package io.file;
 
-import computation.SquareMatrixWrapper;
-import io.InvalidInputValueException;
+import model.SquareMatrixWrapper;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +11,11 @@ public class FileInputManager {
     private final String[] errorMessages = {
             "Ошибка! Количество элементов не совпадает размерностью матрицы.",
             "Ошибка! Файл не найден.",
-            "Ошибка! Не удалось прочитать данные из файла."
+            "Ошибка! Не удалось прочитать данные из файла.",
+            "Ошибка! Введенное значение слишком велико.",
+            "Ошибка! Введенное значение слишком мало.",
+            "Ошибка! Значение погрешности должно быть положительным.",
+            "Предупреждение! Расчеты для нулевой погрешности могут занять много времени.",
     };
     private final SquareMatrixWrapper squareMatrixWrapper;
     private File file ;
@@ -44,14 +47,23 @@ public class FileInputManager {
     private int readDimension( ) throws InvalidFileInputValueException {
         int dimension = 0;
 
-        if (scanner.hasNext()){
-            try {
+        try {
+            if (scanner.hasNext()){
                 dimension = Integer.parseInt( scanner.nextLine() ) ;
+                if (dimension>20) {
+                    throw new InvalidFileInputValueException( this.errorMessages[2] + "\n\t"
+                            +this.errorMessages[3] + "\n\t"
+                            +"[значение порядка матрицы]" );
+                }
+                if (dimension<1) {
+                    throw new InvalidFileInputValueException( this.errorMessages[2] + "\n\t"
+                            +this.errorMessages[4] + "\n\t"
+                            +"[значение порядка матрицы]" );
+                }
                 return dimension;
-            } catch (NumberFormatException e) {
-                throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение порядка матрицы]" );
             }
-        } else {
+            throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение порядка матрицы]" );
+        }catch (NumberFormatException e) {
             throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение порядка матрицы]" );
         }
     }
@@ -59,15 +71,22 @@ public class FileInputManager {
     private double readEpsilon() throws InvalidFileInputValueException {
         double epsilon;
 
-        if (scanner.hasNext()){
-            try {
+        try {
+            if (scanner.hasNext()){
                 epsilon = Double.parseDouble(scanner.nextLine());
+                if (epsilon<0) {
+                    throw new InvalidFileInputValueException( this.errorMessages[2] + "\n\t"
+                            +this.errorMessages[5] + "\n\t"
+                            +"[значение требуемой погрешности]" );
+                }
+                if (epsilon == 0) {
+                    System.out.println( this.errorMessages[6] );
+                }
                 return epsilon;
-            } catch (NumberFormatException e) {
-                throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение порядка матрицы]" );
             }
-        } else {
             throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение требуемой погрешности]" );
+        } catch (NumberFormatException e) {
+            throw new InvalidFileInputValueException( this.errorMessages[2]+"\t[значение порядка матрицы]" );
         }
     }
 
