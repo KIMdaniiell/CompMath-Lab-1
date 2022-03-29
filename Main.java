@@ -19,8 +19,6 @@ public class Main {
             System.out.println("###Проверка пройдена###");
             GaussSeidelMethodSolver gaussSeidelMethodSolver = new GaussSeidelMethodSolver();
             gaussSeidelMethodSolver.solve(squareMatrixWrapper);
-        } else {
-            //TODO
         }
     }
 }
