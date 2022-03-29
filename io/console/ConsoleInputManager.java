@@ -41,7 +41,7 @@ public class ConsoleInputManager {
         while (!valid) {
             System.out.println( this.askingMessages[0] );
             try {
-                dimension = Integer.parseInt(scanner.nextLine());
+                dimension = Integer.parseInt(scanner.nextLine().trim());
                 if ( dimension>20) {
                     throw new InvalidInputValueException(errorMessages[1]);
                 } else if ( dimension<1) {
@@ -70,7 +70,7 @@ public class ConsoleInputManager {
         while (!valid) {
             System.out.println( this.askingMessages[1] );
             try {
-                String str = scanner.nextLine();
+                String str = scanner.nextLine().trim();
                 epsilon = Double.parseDouble(str);
                 if (epsilon < 0) {
                     throw new InvalidInputValueException(errorMessages[6]);

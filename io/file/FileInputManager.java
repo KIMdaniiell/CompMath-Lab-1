@@ -49,7 +49,7 @@ public class FileInputManager {
 
         try {
             if (scanner.hasNext()){
-                dimension = Integer.parseInt( scanner.nextLine() ) ;
+                dimension = Integer.parseInt( scanner.nextLine().trim() ) ;
                 if (dimension>20) {
                     throw new InvalidFileInputValueException( this.errorMessages[2] + "\n\t"
                             +this.errorMessages[3] + "\n\t"
@@ -72,7 +72,7 @@ public class FileInputManager {
         double epsilon;
         try {
             if (scanner.hasNext()){
-                epsilon = Double.parseDouble(scanner.nextLine());
+                epsilon = Double.parseDouble(scanner.nextLine().trim());
                 if (epsilon<0) {
                     throw new InvalidFileInputValueException( this.errorMessages[2] + "\n\t"
                             +this.errorMessages[5] + "\n\t"

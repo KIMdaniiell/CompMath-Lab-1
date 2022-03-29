@@ -42,7 +42,7 @@ public class MatrixInputManager {
         while (!valid) {
             System.out.println( this.askingMessages[0]);
             try {
-                modeNumber = Integer.parseInt(scanner.nextLine());
+                modeNumber = Integer.parseInt(scanner.nextLine().trim());
                 if ((modeNumber != 0)&&(modeNumber != 1)&&(modeNumber != 2))
                     throw new InvalidInputValueException( errorMessages[1]);
                 valid = true;

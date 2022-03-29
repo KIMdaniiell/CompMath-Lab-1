@@ -43,7 +43,7 @@ public class MatrixGenerationManager {
         while (!valid) {
             System.out.println( this.askingMessages[0] );
             try {
-                dimension = Integer.parseInt(scanner.nextLine());
+                dimension = Integer.parseInt(scanner.nextLine().trim());
                 if ( dimension>20) {
                     throw new InvalidInputValueException(errorMessages[1]);
                 } else if ( dimension<1) {
@@ -72,7 +72,7 @@ public class MatrixGenerationManager {
         while (!valid) {
             System.out.println( this.askingMessages[1] );
             try {
-                epsilon = Double.parseDouble(scanner.nextLine());
+                epsilon = Double.parseDouble(scanner.nextLine().trim());
                 if (epsilon < 0) {
                     throw new InvalidInputValueException(errorMessages[6]);
                 }
@@ -100,31 +100,12 @@ public class MatrixGenerationManager {
         int indexOfMax;
 
         for (int i = 0; i< dimension; i++) {
-            maxDigit = -1001;
-            indexOfMax = 0;
             matrixA[i] = generateDoubleArray(dimension);
-            for (int j = 0; j<dimension;j++) {
-                if (matrixA[i][j] > maxDigit) {
-                    maxDigit = matrixA[i][j];
-                    indexOfMax = j;
-                }
+            double rowSum = 0;
+            for (double d: matrixA[i]) {
+                rowSum += Math.abs(d);
             }
-            double temp = matrixA[i][0];
-            matrixA[i][0] = matrixA[i][indexOfMax];
-            matrixA[i][indexOfMax] = temp;
-
-            boolean copiedBiggestElement = false;
-            for (int j = 1; j< dimension;j++){
-                if (matrixA[i][0] <= matrixA[i][j]) {
-                    copiedBiggestElement = true;
-                }
-            }
-            if (copiedBiggestElement) {
-                matrixA[i][0] +=1;
-            }
-            temp = matrixA[i][0];
-            matrixA[i][0] = matrixA[i][i];
-            matrixA[i][i] = temp;
+            matrixA[i][i] = rowSum;
         }
         return matrixA;
     }
@@ -145,7 +126,11 @@ public class MatrixGenerationManager {
             }
             matrixB[i] = sumOfRow;
 
-            System.out.print(unknowns[i]+" ");
+
+        }
+        System.out.print("Стобец сгенерированных неизвестных:\n\t");
+        for (double unkown: unknowns) {
+            System.out.print(unkown+" ");
         }
         System.out.println();
         return matrixB;
@@ -159,5 +144,4 @@ public class MatrixGenerationManager {
         }
         return array;
     }
-
 }
