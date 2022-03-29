@@ -14,6 +14,7 @@ public class SquareMatrixWrapper {
 
     @Deprecated
     public void printMatrixA() {
+        System.out.println("Матрица А");
         for (int i = 0; i < dimension; i++) {
             for (int j = 0; j < dimension; j++) {
                 String element = this.matrixA[i][j] + "";
@@ -28,6 +29,7 @@ public class SquareMatrixWrapper {
     }
     @Deprecated
     public void printMatrixB() {
+        System.out.println("Матрица B");
         for (int i = 0; i < dimension; i++) {
             String element = this.matrixB[i]+"";
             System.out.println("B["+(i+1)+"] = " +element);
