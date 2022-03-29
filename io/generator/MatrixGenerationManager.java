@@ -128,11 +128,11 @@ public class MatrixGenerationManager {
 
 
         }
-        System.out.print("Стобец сгенерированных неизвестных:\n\t");
+        /*System.out.print("Стобец сгенерированных неизвестных:\n\t");
         for (double unkown: unknowns) {
             System.out.print(unkown+" ");
         }
-        System.out.println();
+        System.out.println();*/
         return matrixB;
     }
 

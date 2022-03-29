@@ -55,4 +55,9 @@ public class GaussSeidelConditionChecker {
         }
         return true;
     }
+
+    public boolean rearrange() {
+
+        return false;
+    }
 }

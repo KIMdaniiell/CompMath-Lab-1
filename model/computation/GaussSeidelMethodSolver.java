@@ -35,16 +35,15 @@ public class GaussSeidelMethodSolver {
         } while ( notPrecise(xPrevIter, xCurIter, squareMatrixWrapper.getEpsilon()) );
 
         System.out.println("Количество итераций: "+iterationCounter);
-        System.out.println("Столбец неизвестных: ");
-        for (double d: xCurIter) {
-            System.out.print(String.format("%.7f ",d));
+        System.out.println("Столбец неизвестных: \t\t\t\t\t\t"+"Столбец погрешностей: ");
+        for (int i = 0 ; i < dimension ; i++) {
+            String message = "\t X["+(i+1)+"] = "+xCurIter[i];
+            while (message.length() <40) {
+                message+=" ";
+            }
+            System.out.print(message);
+            System.out.println("\t r["+(i+1)+"] = "+Math.abs( xCurIter[i] - xPrevIter[i]));
         }
-        System.out.println();
-        System.out.println("Столбец погрешностей: ");
-        for (int i = 0; i<dimension; i++) {
-            System.out.print(String.format("%.7f ",Math.abs( xCurIter[i] - xPrevIter[i])));
-        }
-        System.out.println();
         return true;
     }
 
