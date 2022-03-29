@@ -9,10 +9,10 @@ public class Main {
         MatrixInputManager matrixInputManager = new MatrixInputManager();
         SquareMatrixWrapper squareMatrixWrapper = matrixInputManager.readSquareMatrixWrapper("input.txt");
 
-        /**squareMatrixWrapper.printMatrixA();
+        squareMatrixWrapper.printMatrixA();
         System.out.println();
         squareMatrixWrapper.printMatrixB();
-        System.out.println();**/
+        System.out.println();
 
         GaussSeidelConditionChecker gaussSeidelConditionChecker = new GaussSeidelConditionChecker();
         if (gaussSeidelConditionChecker.check(squareMatrixWrapper)) {
